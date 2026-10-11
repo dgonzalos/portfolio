@@ -1,0 +1,35 @@
+/* Same pill outline as the header's CV button and theme toggle */
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 3px;
+  border: 1px solid color-mix(in srgb, var(--hero-ink) 25%, transparent);
+  border-radius: 999px;
+}
+
+.option {
+  height: 100%;
+  padding-inline: var(--space-2);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--hero-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.option:hover {
+  color: var(--hero-ink);
+}
+
+.option[aria-pressed="true"] {
+  background: var(--hero-accent);
+  color: var(--hero-bg);
+  cursor: default;
+}

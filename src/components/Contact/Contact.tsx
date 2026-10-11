@@ -1,10 +1,12 @@
 import { profile } from "@/content/profile";
+import { getI18n } from "@/i18n/server";
 import { isPlaceholder } from "@/lib/format";
 import { Section } from "../Section/Section";
 import { GitHubIcon, LinkedInIcon } from "../Icons";
 import styles from "./Contact.module.css";
 
-export function Contact() {
+export async function Contact() {
+  const { dict } = await getI18n();
   const socials = [
     { label: "LinkedIn", href: profile.socials.linkedin, Icon: LinkedInIcon },
     { label: "GitHub", href: profile.socials.github, Icon: GitHubIcon },
@@ -13,7 +15,7 @@ export function Contact() {
   return (
     <Section id="contact">
       <div className={styles.contact}>
-        <p className={styles.lead}>Have a project or a role in mind? Get in touch.</p>
+        <p className={styles.lead}>{dict.contact.lead}</p>
         <a href={`mailto:${profile.email}`} className={styles.email}>
           {profile.email}
         </a>

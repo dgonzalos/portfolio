@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 66rem) {
   .wrapper {
     display: block;
   }

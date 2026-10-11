@@ -11,3 +11,8 @@ export function publicFileExists(src: string | undefined): src is string {
   if (!src || !src.startsWith("/")) return false;
   return existsSync(path.join(process.cwd(), "public", src));
 }
+
+/** First path that exists in /public, e.g. a localized file with the English one as fallback. */
+export function firstPublicFile(...candidates: (string | undefined)[]): string | undefined {
+  return candidates.find(publicFileExists);
+}

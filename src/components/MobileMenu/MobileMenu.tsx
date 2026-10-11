@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import { sections } from "@/lib/navigation";
+import type { SectionId } from "@/lib/navigation";
 import styles from "./MobileMenu.module.css";
 
-export function MobileMenu() {
+type MobileMenuProps = {
+  sections: { id: SectionId; label: string }[];
+  labels: { open: string; close: string; nav: string };
+};
+
+export function MobileMenu({ sections, labels }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -25,10 +30,10 @@ export function MobileMenu() {
         onClick={() => setOpen((value) => !value)}
       >
         <span className={styles.bars} data-open={open} aria-hidden="true" />
-        <span className="visually-hidden">{open ? "Close menu" : "Open menu"}</span>
+        <span className="visually-hidden">{open ? labels.close : labels.open}</span>
       </button>
 
-      <nav id={panelId} aria-label="Sections" className={styles.panel} data-open={open} hidden={!open}>
+      <nav id={panelId} aria-label={labels.nav} className={styles.panel} data-open={open} hidden={!open}>
         <ul>
           {sections.map((section) => (
             <li key={section.id}>

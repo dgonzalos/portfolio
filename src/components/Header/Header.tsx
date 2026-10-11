@@ -1,13 +1,17 @@
 import { profile } from "@/content/profile";
-import { publicFileExists } from "@/lib/assets";
-import { sections } from "@/lib/navigation";
+import { getI18n } from "@/i18n/server";
+import { firstPublicFile } from "@/lib/assets";
+import { sectionIds } from "@/lib/navigation";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import { MobileMenu } from "../MobileMenu/MobileMenu";
 import styles from "./Header.module.css";
 
-export function Header() {
+export async function Header() {
+  const { locale, dict } = await getI18n();
   const firstName = profile.name.split(" ")[0];
-  const hasCv = publicFileExists(profile.cvUrl);
+  const cvUrl = firstPublicFile(profile.cvUrl?.[locale], profile.cvUrl?.en);
+  const sections = sectionIds.map((id) => ({ id, label: dict.nav[id] }));
 
   return (
     <header className={styles.header}>
@@ -17,7 +21,7 @@ export function Header() {
           <span className={styles.dot} aria-hidden="true" />
         </a>
 
-        <nav aria-label="Sections" className={styles.nav}>
+        <nav aria-label={dict.navLabel} className={styles.nav}>
           <ul className={styles.links}>
             {sections.map((section) => (
               <li key={section.id}>
@@ -30,13 +34,14 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          {hasCv && (
-            <a href={profile.cvUrl} className={styles.cv} download>
-              Download CV
+          {cvUrl && (
+            <a href={cvUrl} className={styles.cv} download>
+              {dict.downloadCv}
             </a>
           )}
-          <ThemeToggle />
-          <MobileMenu />
+          <LanguageSwitcher current={locale} labels={dict.language} />
+          <ThemeToggle labels={dict.theme} />
+          <MobileMenu sections={sections} labels={{ ...dict.menu, nav: dict.navLabel }} />
         </div>
       </div>
     </header>

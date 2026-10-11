@@ -1,12 +1,14 @@
 import { profile } from "@/content/profile";
-import { publicFileExists } from "@/lib/assets";
+import { getI18n } from "@/i18n/server";
+import { firstPublicFile } from "@/lib/assets";
 import { isPlaceholder } from "@/lib/format";
 import { GitHubIcon, LinkedInIcon } from "../Icons";
 import styles from "./Hero.module.css";
 
-export function Hero() {
+export async function Hero() {
+  const { locale, dict, t } = await getI18n();
   const nameParts = profile.name.split(" ");
-  const hasCv = publicFileExists(profile.cvUrl);
+  const cvUrl = firstPublicFile(profile.cvUrl?.[locale], profile.cvUrl?.en);
 
   return (
     <section id="home" className={styles.hero} aria-labelledby="hero-name">
@@ -15,7 +17,7 @@ export function Hero() {
           {profile.availability && (
             <p className={styles.availability}>
               <span className={styles.pulse} aria-hidden="true" />
-              {profile.availability}
+              {t(profile.availability)}
             </p>
           )}
 
@@ -27,16 +29,16 @@ export function Hero() {
             ))}
           </h1>
 
-          <p className={styles.headline}>{profile.headline}</p>
-          <p className={styles.summary}>{profile.summary}</p>
+          <p className={styles.headline}>{t(profile.headline)}</p>
+          <p className={styles.summary}>{t(profile.summary)}</p>
 
           <div className={styles.actions}>
             <a href="#projects" className={styles.primary}>
-              View projects
+              {dict.hero.viewProjects}
             </a>
-            {hasCv && (
-              <a href={profile.cvUrl} className={styles.secondary} download>
-                Download CV
+            {cvUrl && (
+              <a href={cvUrl} className={styles.secondary} download>
+                {dict.downloadCv}
               </a>
             )}
             <ul className={styles.socials}>
@@ -61,9 +63,9 @@ export function Hero() {
         {profile.snapshot && profile.snapshot.length > 0 && (
           <dl className={styles.snapshot}>
             {profile.snapshot.map((fact) => (
-              <div key={fact.label} className={styles.fact}>
-                <dt>{fact.label}</dt>
-                <dd>{fact.value}</dd>
+              <div key={fact.label.en} className={styles.fact}>
+                <dt>{t(fact.label)}</dt>
+                <dd>{t(fact.value)}</dd>
               </div>
             ))}
           </dl>

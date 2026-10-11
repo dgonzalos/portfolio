@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getI18n } from "@/i18n/server";
 import { publicFileExists } from "@/lib/assets";
 import styles from "./ImageSlot.module.css";
 
@@ -15,8 +16,9 @@ type ImageSlotProps = {
  * 16:10 image from /public. If the file doesn't exist yet, shows a placeholder
  * with the project name and the expected path, so you know what's missing.
  */
-export function ImageSlot({ src, alt, fallback, sizes = "(max-width: 52rem) 100vw, 50vw", className }: ImageSlotProps) {
+export async function ImageSlot({ src, alt, fallback, sizes = "(max-width: 52rem) 100vw, 50vw", className }: ImageSlotProps) {
   const exists = publicFileExists(src);
+  const { dict } = await getI18n();
 
   return (
     <div className={`${styles.slot} ${className ?? ""}`}>
@@ -25,7 +27,11 @@ export function ImageSlot({ src, alt, fallback, sizes = "(max-width: 52rem) 100v
       ) : (
         <div className={styles.placeholder}>
           <span className={styles.placeholderName}>{fallback}</span>
-          {src && <span className={styles.placeholderPath}>Add public{src}</span>}
+          {src && (
+            <span className={styles.placeholderPath}>
+              {dict.addImage} public{src}
+            </span>
+          )}
         </div>
       )}
     </div>

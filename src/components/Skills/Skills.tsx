@@ -1,18 +1,21 @@
 import { skills } from "@/content/skills";
+import { getI18n } from "@/i18n/server";
 import { Section } from "../Section/Section";
 import styles from "./Skills.module.css";
 
-export function Skills() {
+export async function Skills() {
+  const { t } = await getI18n();
+
   return (
     <Section id="skills">
       <dl className={styles.groups}>
         {skills.map((group) => (
-          <div key={group.category} className={styles.group}>
-            <dt className={styles.category}>{group.category}</dt>
+          <div key={group.category.en} className={styles.group}>
+            <dt className={styles.category}>{t(group.category)}</dt>
             <dd className={styles.items}>
               <ul>
                 {group.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={t(item)}>{t(item)}</li>
                 ))}
               </ul>
             </dd>

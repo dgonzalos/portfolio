@@ -1,4 +1,5 @@
-import { sectionLabel, type SectionId } from "@/lib/navigation";
+import { getI18n } from "@/i18n/server";
+import type { SectionId } from "@/lib/navigation";
 import styles from "./Section.module.css";
 
 type SectionProps = {
@@ -11,7 +12,8 @@ type SectionProps = {
 };
 
 /** Section with the title in a fixed side column and the content on the right. */
-export function Section({ id, title, intro, tone = "default", children }: SectionProps) {
+export async function Section({ id, title, intro, tone = "default", children }: SectionProps) {
+  const { dict } = await getI18n();
   const headingId = `${id}-title`;
 
   return (
@@ -19,7 +21,7 @@ export function Section({ id, title, intro, tone = "default", children }: Sectio
       <div className={styles.inner}>
         <header className={styles.aside}>
           <h2 id={headingId} className={styles.title}>
-            {title ?? sectionLabel(id)}
+            {title ?? dict.nav[id]}
           </h2>
           {intro && <p className={styles.intro}>{intro}</p>}
         </header>

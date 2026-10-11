@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import type { Dictionary } from "@/i18n/dictionaries";
 import { THEME_STORAGE_KEY, type Theme } from "@/lib/theme";
 import styles from "./ThemeToggle.module.css";
 
@@ -14,7 +15,7 @@ function getTheme(): Theme {
   return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ labels }: { labels: Dictionary["theme"] }) {
   // The server doesn't know the theme: null until hydration.
   const theme = useSyncExternalStore(subscribe, getTheme, () => null);
   const next: Theme = theme === "dark" ? "light" : "dark";
@@ -33,7 +34,7 @@ export function ThemeToggle() {
       type="button"
       className={styles.toggle}
       onClick={toggle}
-      aria-label={theme ? `Switch to ${next} theme` : "Toggle theme"}
+      aria-label={theme ? (next === "dark" ? labels.toDark : labels.toLight) : labels.toggle}
     >
       {/* Icons are shown via CSS based on data-theme, without waiting for hydration */}
       <svg className={styles.moon} viewBox="0 0 24 24" aria-hidden="true">

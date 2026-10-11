@@ -98,13 +98,20 @@
   background: color-mix(in srgb, var(--hero-ink) 8%, transparent);
 }
 
-/* 7 links + CV button need more room than the content breakpoint */
-@media (max-width: 60rem) {
+/* 7 links + CV + language switch: the Spanish labels need ~1020px */
+@media (max-width: 66rem) {
   .nav {
     display: none;
   }
 
   .actions {
     margin-left: auto;
+  }
+}
+
+/* Phones: no room for every control. The hero keeps its own Download CV button. */
+@media (max-width: 30rem) {
+  .cv {
+    display: none;
   }
 }
