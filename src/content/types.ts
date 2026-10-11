@@ -11,8 +11,8 @@ export type Profile = {
   about: string[];
   location?: string;
   email: string;
-  /** Path inside /public, e.g. "/avatar.jpg" (square, min. 400×400). */
-  avatar?: string;
+  /** At-a-glance facts shown next to the name in the hero (3–4 rows). */
+  snapshot?: { label: string; value: string }[];
   /** Path inside /public, e.g. "/cv-diego.pdf". */
   cvUrl?: string;
   /** Short availability text, e.g. "Open to new opportunities". */

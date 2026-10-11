@@ -19,7 +19,7 @@ export const projects: Project[] = [
       "Read-only MCP server that gives Claude occupancy, revenue and order-funnel analytics.",
     ],
     demoUrl: "https://ticketing-system-web-eta.vercel.app",
-    image: "/projects/ticketing.png",
+    image: "/products/seatly.png",
     featured: true,
   },
   {

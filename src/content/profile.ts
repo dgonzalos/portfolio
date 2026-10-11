@@ -19,10 +19,16 @@ export const profile: Profile = {
     "I’m looking for opportunities where I can contribute hands-on to web products, collaborate closely with Product and Design, and support other engineers through technical leadership and mentoring. I enjoy building features end to end, including an independent full-stack ticketing platform using React, TypeScript and Fastify.",
   ],
 
+  snapshot: [
+    { label: "Most recently", value: "Product Engineering Lead at GoStudent, leading a team of four" },
+    { label: "Design systems", value: "About 20 shared components adopted by three teams" },
+    { label: "Building", value: "Seatly, a full-stack ticketing platform with an AI admin assistant" },
+    { label: "Experience", value: "Over a decade, in Madrid, London and Barcelona" },
+  ],
+
   location: "Madrid, Spain",
   email: "d.gonzalo@gmail.com",
-  avatar: "/avatar.jpg",
-  cvUrl: "/cv-diego.pdf",
+  cvUrl: "/Diego_Gonzalo_Sanchez_CV.pdf",
   availability: "Open to new opportunities",
 
   socials: {

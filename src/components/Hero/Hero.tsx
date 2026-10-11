@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { profile } from "@/content/profile";
 import { publicFileExists } from "@/lib/assets";
 import { isPlaceholder } from "@/lib/format";
@@ -7,7 +6,6 @@ import styles from "./Hero.module.css";
 
 export function Hero() {
   const nameParts = profile.name.split(" ");
-  const hasAvatar = publicFileExists(profile.avatar);
   const hasCv = publicFileExists(profile.cvUrl);
 
   return (
@@ -60,10 +58,15 @@ export function Hero() {
           </div>
         </div>
 
-        {hasAvatar && (
-          <div className={styles.avatar}>
-            <Image src={profile.avatar!} alt={`Photo of ${profile.name}`} width={400} height={400} priority />
-          </div>
+        {profile.snapshot && profile.snapshot.length > 0 && (
+          <dl className={styles.snapshot}>
+            {profile.snapshot.map((fact) => (
+              <div key={fact.label} className={styles.fact}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
         )}
       </div>
     </section>
