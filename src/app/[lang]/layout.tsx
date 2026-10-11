@@ -15,18 +15,35 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
+/**
+ * Absolute base for metadata URLs (og:image, og:url…). Social networks can't read
+ * relative or localhost URLs, so the order is:
+ * 1. NEXT_PUBLIC_SITE_URL, if set (e.g. a custom domain).
+ * 2. The production domain Vercel exposes on every build.
+ * 3. localhost for local development.
+ */
+function siteUrl(): URL {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return new URL(process.env.NEXT_PUBLIC_SITE_URL);
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+  }
+  return new URL("http://localhost:3000");
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, t } = await getI18n();
   const title = `${profile.name} | ${t(profile.headline)}`;
   const description = t(profile.summary);
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+    metadataBase: siteUrl(),
     title,
     description,
     authors: [{ name: profile.name }],
     openGraph: {
       type: "website",
+      // The language lives in a cookie, not the URL: "/" is the only public address.
+      url: "/",
       locale: ogLocale[locale],
       title,
       description,
