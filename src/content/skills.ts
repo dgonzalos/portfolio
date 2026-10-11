@@ -7,7 +7,7 @@ export const skills: SkillGroup[] = [
   {
     category: "Frontend",
     items: ["React", "Next.js", "TypeScript", "JavaScript", "CSS Modules", "Semantic HTML", "Accessibility",
-      "Redux Toolkit", "Zustand","TanStack","SASS/SCSS","Tailwind CSS", "Vite"
+      "Redux Toolkit", "Zustand","TanStack","SASS/SCSS","Tailwind CSS", "Vite", "Storybook", "ESLint", "Figma"
     ],
   },
    {
@@ -28,6 +28,6 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "Tools",
-    items: ["Git", "GitHub", "Vite", "Vercel", "TODO"],
+    items: ["Git", "GitHub", "Vite", "Vercel", "Docker"],
   },
 ];

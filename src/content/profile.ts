@@ -1,7 +1,5 @@
 import type { Profile } from "./types";
 
-// TODO: fill in everything marked. What's already written is a suggestion, change it freely.
-
 export const profile: Profile = {
   name: "Diego Gonzalo Sánchez",
 
