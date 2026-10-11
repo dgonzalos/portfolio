@@ -67,9 +67,82 @@ While an image doesn't exist, a placeholder showing the expected path is display
 
 ## Languages
 
-The language is never in the URL. Both versions are prerendered as `/en` and `/es`, and `src/proxy.ts` serves one of them at `/` based on a `lang` cookie (English by default). The EN/ES switch in the header sets that cookie and reloads, keeping the current section. Visiting `/es` or `/en` directly saves the choice and redirects to `/`.
+The site is built twice, once in English and once in Spanish. A small proxy picks which copy to send for `/`, so the language never appears in the URL.
 
-Search engines and link previews always see the English version.
+### 1. `[lang]` builds one page per language
+
+`src/app/[lang]/` is a dynamic segment: one set of files that serves several URLs. The layout lists the languages to build:
+
+```ts
+// src/app/[lang]/layout.tsx
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang })); // → /en and /es
+}
+export const dynamicParams = false; // any other value, e.g. /fr, is a 404
+```
+
+At build time Next renders the page once per language and saves two static HTML files, `/en` and `/es`. Both are served instantly, and both still refresh their GitHub stats every 6 hours.
+
+### 2. Components read the language without passing it around
+
+Because `[lang]` sits above the root layout, any server component can read it with `next/root-params`. `src/i18n/server.ts` wraps that in `getI18n()`:
+
+```ts
+const { locale, dict, t } = await getI18n();
+
+<h3>{t(job.role)}</h3>           // content: picks role.en or role.es
+<dt>{dict.products.problem}</dt> // interface text: "Problem" / "Problema"
+```
+
+There are two kinds of text:
+
+- **Interface strings** (buttons, menu, labels) live in `src/i18n/dictionaries.ts`. Both languages must define every key, or typecheck fails.
+- **Content** in `src/content/*.ts` is written as `{ en: "…", es: "…" }` (the `Localized` type). Things that don't change by language, like names, URLs, dates and tech stacks, stay plain strings, and `t()` returns them as they are.
+
+Client components (theme toggle, mobile menu, language switcher) can't call `getI18n()`, because it only runs on the server. `Header` passes them their translated labels as props.
+
+### 3. The proxy keeps the language out of the URL
+
+`src/proxy.ts` (Next 16's name for middleware) runs before the page and decides which copy to serve:
+
+```
+Request for "/"
+  └─ read the "lang" cookie
+       ├─ none or "en" → rewrite to /en  (English HTML)
+       └─ "es"         → rewrite to /es  (Spanish HTML)
+  The address bar still shows "/"
+```
+
+A **rewrite** is internal: the server swaps which page it returns, and the browser never sees a different URL. Typing `/en` or `/es` directly does a **redirect** instead: it saves that language in the cookie and sends the browser back to `/`.
+
+The proxy only runs for exactly `/`, `/en` and `/es`. Everything else passes straight through, including the share image (`/en/opengraph-image`), the favicon (`/-/icon.svg`), scripts and images.
+
+### 4. The EN/ES switch sets the cookie and reloads
+
+```ts
+// src/components/LanguageSwitcher/LanguageSwitcher.tsx
+document.cookie = "lang=es; path=/; max-age=31536000; samesite=lax";
+window.location.reload();
+```
+
+On reload the proxy sees the cookie and serves the other page. The `#section` in the URL is kept, so the visitor stays where they were, and the choice is remembered for a year.
+
+### Trade-offs
+
+| Goal | How it's met |
+| --- | --- |
+| No language in the URL | Proxy rewrite plus a cookie |
+| Fast, no flash of the wrong language | Both pages are prebuilt; the server sends the right one directly |
+| Free | Plain Next.js features, no i18n library or translation service |
+| No missing translations | TypeScript requires both `en` and `es` |
+
+The cost: since the URL never says "Spanish", search engines and link previews (LinkedIn, Slack…) only ever see English. To send someone the Spanish version, share `…/es`. It opens the site in Spanish and also saves Spanish as their preference.
+
+### Adding or changing text
+
+- **New interface text:** add the key to the `Dictionary` type and to both `en` and `es` in `src/i18n/dictionaries.ts`.
+- **New content field a visitor reads:** type it as `Localized` in `src/content/types.ts`, then render it with `t(...)`.
+- **New section:** add its id to `src/lib/navigation.ts` and its menu label to `nav` in both dictionaries.
 
 ## Light / dark theme
 
