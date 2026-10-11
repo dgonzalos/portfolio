@@ -1,0 +1,94 @@
+.wrapper {
+  display: none;
+}
+
+@media (max-width: 52rem) {
+  .wrapper {
+    display: block;
+  }
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--hero-ink);
+  cursor: pointer;
+}
+
+/* Hamburguesa que se convierte en X */
+.bars,
+.bars::before,
+.bars::after {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background: currentColor;
+  transition:
+    transform 200ms ease,
+    background-color 200ms ease;
+}
+
+.bars {
+  position: relative;
+}
+
+.bars::before,
+.bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.bars::before {
+  top: -6px;
+}
+
+.bars::after {
+  top: 6px;
+}
+
+.bars[data-open="true"] {
+  background: transparent;
+}
+
+.bars[data-open="true"]::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.bars[data-open="true"]::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.panel {
+  position: fixed;
+  inset: var(--header-h) 0 auto;
+  padding: var(--space-4) var(--gutter) var(--space-8);
+  background: var(--hero-bg);
+  border-top: 1px solid color-mix(in srgb, var(--hero-ink) 15%, transparent);
+  animation: drop 200ms ease;
+}
+
+.link {
+  display: block;
+  padding-block: var(--space-3);
+  color: var(--hero-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--hero-accent);
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}

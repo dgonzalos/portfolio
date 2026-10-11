@@ -1,0 +1,42 @@
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid color-mix(in srgb, var(--hero-ink) 25%, transparent);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--hero-ink);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.toggle:hover {
+  border-color: var(--hero-accent);
+  background: color-mix(in srgb, var(--hero-ink) 8%, transparent);
+}
+
+.toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Claro: luna (pasar a oscuro). Oscuro: sol (pasar a claro). */
+.sun {
+  display: none;
+}
+
+:global([data-theme="dark"]) .sun {
+  display: block;
+}
+
+:global([data-theme="dark"]) .moon {
+  display: none;
+}

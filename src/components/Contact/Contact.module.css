@@ -1,0 +1,53 @@
+.contact {
+  display: grid;
+  gap: var(--space-6);
+  justify-items: start;
+}
+
+.lead {
+  max-width: 40ch;
+  font-size: var(--text-lg);
+}
+
+.email {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1rem + 3vw, 3rem);
+  font-weight: 700;
+  font-stretch: 85%;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+  overflow-wrap: anywhere;
+  transition: text-underline-offset 150ms ease;
+}
+
+.email:hover {
+  text-underline-offset: 12px;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-muted);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.social:hover {
+  color: var(--color-ink);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}

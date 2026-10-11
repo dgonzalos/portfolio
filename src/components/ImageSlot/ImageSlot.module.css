@@ -1,0 +1,39 @@
+.slot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.image {
+  object-fit: cover;
+  object-position: top;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  height: 100%;
+  padding: var(--space-6);
+  background:
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 45%),
+    var(--hero-bg);
+  color: var(--hero-ink);
+}
+
+.placeholderName {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-stretch: 85%;
+  line-height: 1.1;
+}
+
+.placeholderPath {
+  color: var(--hero-muted);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,173 @@
+/*
+ * Tokens de diseño. Los componentes solo consumen estas variables:
+ * nunca escriben un color o una fuente directamente.
+ */
+
+:root {
+  /* Paleta — claro */
+  --color-bg: #ffffff;
+  --color-surface: #f1f6f6;
+  --color-ink: #0e2226;
+  --color-muted: #4a6166;
+  --color-line: #d5e2e3;
+  --color-primary: #0b4f5c; /* azul petróleo */
+  --color-accent: #1e9e6a; /* verde (decoración, bordes, puntos) */
+  --color-accent-text: #137a50; /* verde con contraste AA sobre blanco */
+
+  /* El inicio va siempre sobre petróleo, en los dos temas */
+  --hero-bg: #0b4f5c;
+  --hero-ink: #ffffff;
+  --hero-muted: #bfe3da;
+  --hero-accent: #5ee0a8;
+
+  /* Tipografía */
+  --font-display: "Bricolage Grotesque Variable", system-ui, sans-serif;
+  --font-body: "Figtree Variable", system-ui, sans-serif;
+
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: clamp(1.875rem, 1.4rem + 1.8vw, 2.5rem);
+  --text-hero: clamp(3rem, 1.6rem + 7vw, 7.5rem);
+
+  /* Espaciado y layout */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --page-max: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --header-h: 4rem;
+
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #071417;
+  --color-surface: #0d2125;
+  --color-ink: #e6f0f1;
+  --color-muted: #93aaae;
+  --color-line: #1c3539;
+  --color-primary: #4fb3c4;
+  --color-accent: #3fd08f;
+  --color-accent-text: #3fd08f;
+
+  --hero-bg: #0a2e35;
+  --hero-ink: #e6f0f1;
+  --hero-muted: #a9cfc8;
+  --hero-accent: #5ee0a8;
+
+  color-scheme: dark;
+}
+
+/* Reset mínimo */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #071417;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
