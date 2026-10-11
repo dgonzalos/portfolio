@@ -1,4 +1,5 @@
 import { profile } from "@/content/profile";
+import { publicFileExists } from "@/lib/assets";
 import { sections } from "@/lib/navigation";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
 import { MobileMenu } from "../MobileMenu/MobileMenu";
@@ -6,6 +7,7 @@ import styles from "./Header.module.css";
 
 export function Header() {
   const firstName = profile.name.split(" ")[0];
+  const hasCv = publicFileExists(profile.cvUrl);
 
   return (
     <header className={styles.header}>
@@ -28,6 +30,11 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
+          {hasCv && (
+            <a href={profile.cvUrl} className={styles.cv} download>
+              Download CV
+            </a>
+          )}
           <ThemeToggle />
           <MobileMenu />
         </div>

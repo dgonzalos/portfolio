@@ -77,7 +77,29 @@
   gap: var(--space-2);
 }
 
-@media (max-width: 52rem) {
+.cv {
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding-inline: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--hero-ink) 25%, transparent);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.cv:hover {
+  border-color: var(--hero-accent);
+  background: color-mix(in srgb, var(--hero-ink) 8%, transparent);
+}
+
+/* 7 links + CV button need more room than the content breakpoint */
+@media (max-width: 60rem) {
   .nav {
     display: none;
   }
