@@ -4,7 +4,7 @@ import styles from "./Skills.module.css";
 
 export function Skills() {
   return (
-    <Section id="habilidades">
+    <Section id="skills">
       <dl className={styles.groups}>
         {skills.map((group) => (
           <div key={group.category} className={styles.group}>

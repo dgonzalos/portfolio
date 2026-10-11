@@ -25,10 +25,10 @@ export function MobileMenu() {
         onClick={() => setOpen((value) => !value)}
       >
         <span className={styles.bars} data-open={open} aria-hidden="true" />
-        <span className="visually-hidden">{open ? "Cerrar menú" : "Abrir menú"}</span>
+        <span className="visually-hidden">{open ? "Close menu" : "Open menu"}</span>
       </button>
 
-      <nav id={panelId} aria-label="Secciones" className={styles.panel} data-open={open} hidden={!open}>
+      <nav id={panelId} aria-label="Sections" className={styles.panel} data-open={open} hidden={!open}>
         <ul>
           {sections.map((section) => (
             <li key={section.id}>

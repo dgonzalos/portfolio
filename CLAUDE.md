@@ -14,8 +14,7 @@ There is no linter, formatter or test suite configured. `typecheck` + `build` ar
 
 ## Language
 
-- **Code comments and docs (README, CLAUDE.md) are in English.**
-- **User-facing copy, section ids/anchors and content are in Spanish** (`lang="es"`, `es-ES` locale for dates). Keep new UI text and anchors in Spanish.
+Everything is in **English**: code comments, docs, user-facing copy, content and section ids/anchors (`lang="en"`, `en-US` locale for dates in `lib/format.ts`). Keep new text in English.
 
 ## Structure
 

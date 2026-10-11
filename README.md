@@ -42,7 +42,7 @@ Files for `public/`:
 | File | Use | Format |
 | --- | --- | --- |
 | `avatar.jpg` | Hero photo | Square, min. 400×400 |
-| `cv-diego.pdf` | "Descargar CV" button | PDF |
+| `cv-diego.pdf` | "Download CV" button | PDF |
 | `projects/*.png` | Project screenshots | 16:10, e.g. 1600×1000 |
 | `products/*.png` | Product screenshots | 16:10, e.g. 1600×1000 |
 

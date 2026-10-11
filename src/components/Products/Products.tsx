@@ -6,11 +6,11 @@ import { Stack } from "../Stack/Stack";
 import { ImageSlot } from "../ImageSlot/ImageSlot";
 import styles from "./Products.module.css";
 
-const statusLabel = { live: "En producción", beta: "Beta" } as const;
+const statusLabel = { live: "Live", beta: "Beta" } as const;
 
 export function Products() {
   return (
-    <Section id="productos" tone="surface" intro="Aplicaciones desplegadas que puedes usar hoy.">
+    <Section id="products" tone="surface" intro="Deployed apps you can use today.">
       <div className={styles.products}>
         {products.map((product) => {
           const code = product.repo ? repoUrl(product.repo) : null;
@@ -18,7 +18,7 @@ export function Products() {
 
           return (
             <article key={product.slug} className={styles.product}>
-              <ImageSlot src={product.image} alt={`Captura de ${product.name}`} fallback={product.name} />
+              <ImageSlot src={product.image} alt={`Screenshot of ${product.name}`} fallback={product.name} />
 
               <div className={styles.body}>
                 <p className={styles.status} data-status={product.status}>
@@ -29,16 +29,16 @@ export function Products() {
 
                 <dl className={styles.facts}>
                   <div>
-                    <dt>Problema</dt>
+                    <dt>Problem</dt>
                     <dd>{product.problem}</dd>
                   </div>
                   <div>
-                    <dt>Mi papel</dt>
+                    <dt>My role</dt>
                     <dd>{product.role}</dd>
                   </div>
                   {product.metrics && (
                     <div>
-                      <dt>Resultado</dt>
+                      <dt>Impact</dt>
                       <dd className={styles.metric}>{product.metrics}</dd>
                     </div>
                   )}
@@ -49,12 +49,12 @@ export function Products() {
                 <p className={styles.actions}>
                   {live && (
                     <a href={product.url} target="_blank" rel="noreferrer" className={styles.open}>
-                      Abrir {product.name}
+                      Open {product.name}
                     </a>
                   )}
                   {code && (
                     <a href={code} target="_blank" rel="noreferrer" className={styles.code}>
-                      Ver código
+                      View code
                     </a>
                   )}
                 </p>

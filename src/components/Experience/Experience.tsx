@@ -5,15 +5,15 @@ import { Stack } from "../Stack/Stack";
 import styles from "./Experience.module.css";
 
 const typeLabel = {
-  "full-time": "Jornada completa",
+  "full-time": "Full-time",
   freelance: "Freelance",
-  prácticas: "Prácticas",
-  contrato: "Contrato",
+  internship: "Internship",
+  contract: "Contract",
 } as const;
 
 export function Experience() {
   return (
-    <Section id="experiencia" tone="surface">
+    <Section id="experience" tone="surface">
       <ol className={styles.timeline}>
         {experience.map((job) => {
           const current = job.end === null;

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: profile.name }],
   openGraph: {
     type: "website",
-    locale: "es_ES",
+    locale: "en_US",
     title,
     description: profile.summary,
   },
@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // suppressHydrationWarning: the theme script sets data-theme before hydration
-    <html lang="es" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

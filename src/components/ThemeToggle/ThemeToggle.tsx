@@ -33,7 +33,7 @@ export function ThemeToggle() {
       type="button"
       className={styles.toggle}
       onClick={toggle}
-      aria-label={theme ? `Cambiar a tema ${next === "dark" ? "oscuro" : "claro"}` : "Cambiar tema"}
+      aria-label={theme ? `Switch to ${next} theme` : "Toggle theme"}
     >
       {/* Icons are shown via CSS based on data-theme, without waiting for hydration */}
       <svg className={styles.moon} viewBox="0 0 24 24" aria-hidden="true">

@@ -25,7 +25,7 @@ export function ImageSlot({ src, alt, fallback, sizes = "(max-width: 52rem) 100v
       ) : (
         <div className={styles.placeholder}>
           <span className={styles.placeholderName}>{fallback}</span>
-          {src && <span className={styles.placeholderPath}>Añade public{src}</span>}
+          {src && <span className={styles.placeholderPath}>Add public{src}</span>}
         </div>
       )}
     </div>

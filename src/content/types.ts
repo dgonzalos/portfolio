@@ -7,7 +7,7 @@ export type Profile = {
   headline: string;
   /** 1–2 sentences that accompany the headline in the hero. */
   summary: string;
-  /** Paragraphs for the "Sobre mí" (About) section (2–3 short paragraphs). */
+  /** Paragraphs for the "About" section (2–3 short paragraphs). */
   about: string[];
   location?: string;
   email: string;
@@ -15,7 +15,7 @@ export type Profile = {
   avatar?: string;
   /** Path inside /public, e.g. "/cv-diego.pdf". */
   cvUrl?: string;
-  /** Short availability text, e.g. "Abierto a nuevas oportunidades". */
+  /** Short availability text, e.g. "Open to new opportunities". */
   availability?: string;
   socials: {
     github: string;
@@ -33,7 +33,7 @@ export type Experience = {
   /** Format "YYYY-MM", or null if it's your current role. */
   end: string | null;
   location?: string;
-  type?: "full-time" | "freelance" | "prácticas" | "contrato";
+  type?: "full-time" | "freelance" | "internship" | "contract";
   /** 2–3 achievements. Ideally verb + what you did + measurable result. */
   highlights: string[];
   stack: string[];

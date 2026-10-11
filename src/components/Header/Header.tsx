@@ -10,12 +10,12 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <a href="#inicio" className={styles.brand}>
+        <a href="#home" className={styles.brand}>
           {firstName}
           <span className={styles.dot} aria-hidden="true" />
         </a>
 
-        <nav aria-label="Secciones" className={styles.nav}>
+        <nav aria-label="Sections" className={styles.nav}>
           <ul className={styles.links}>
             {sections.map((section) => (
               <li key={section.id}>

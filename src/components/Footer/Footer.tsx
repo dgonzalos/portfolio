@@ -8,7 +8,7 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {profile.name}
         </p>
-        <p>Hecho con Next.js y desplegado en Vercel</p>
+        <p>Built with Next.js and deployed on Vercel</p>
       </div>
     </footer>
   );

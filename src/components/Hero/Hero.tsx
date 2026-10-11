@@ -11,7 +11,7 @@ export function Hero() {
   const hasCv = publicFileExists(profile.cvUrl);
 
   return (
-    <section id="inicio" className={styles.hero} aria-labelledby="hero-name">
+    <section id="home" className={styles.hero} aria-labelledby="hero-name">
       <div className={styles.inner}>
         <div className={styles.text}>
           {profile.availability && (
@@ -33,12 +33,12 @@ export function Hero() {
           <p className={styles.summary}>{profile.summary}</p>
 
           <div className={styles.actions}>
-            <a href="#proyectos" className={styles.primary}>
-              Ver proyectos
+            <a href="#projects" className={styles.primary}>
+              View projects
             </a>
             {hasCv && (
               <a href={profile.cvUrl} className={styles.secondary} download>
-                Descargar CV
+                Download CV
               </a>
             )}
             <ul className={styles.socials}>
@@ -62,7 +62,7 @@ export function Hero() {
 
         {hasAvatar && (
           <div className={styles.avatar}>
-            <Image src={profile.avatar!} alt={`Foto de ${profile.name}`} width={400} height={400} priority />
+            <Image src={profile.avatar!} alt={`Photo of ${profile.name}`} width={400} height={400} priority />
           </div>
         )}
       </div>

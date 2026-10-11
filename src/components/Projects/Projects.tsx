@@ -16,24 +16,18 @@ export async function Projects() {
   const rest = withStats.filter((item) => item !== featured);
 
   return (
-    <Section id="proyectos" intro="Código abierto en GitHub.">
+    <Section id="projects" intro="Open source on GitHub.">
       {featured && (
         <article className={styles.featured}>
           <ImageSlot
             src={featured.project.image}
-            alt={`Captura de ${featured.project.name}`}
+            alt={`Screenshot of ${featured.project.name}`}
             fallback={featured.project.name}
           />
           <div className={styles.featuredBody}>
             <ProjectHeader project={featured.project} stats={featured.stats} large />
             <p className={styles.description}>{featured.project.description}</p>
-            {featured.project.highlights && (
-              <ul className={styles.highlights}>
-                {featured.project.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-            )}
+            <Highlights items={featured.project.highlights} />
             <Stack items={featured.project.stack} />
             <ProjectLinks project={featured.project} />
           </div>
@@ -46,6 +40,7 @@ export async function Projects() {
             <li key={project.slug} className={styles.row}>
               <ProjectHeader project={project} stats={stats} />
               <p className={styles.description}>{project.description}</p>
+              <Highlights items={project.highlights} />
               <Stack items={project.stack} />
               <ProjectLinks project={project} />
             </li>
@@ -65,12 +60,24 @@ function ProjectHeader({ project, stats, large }: { project: Project; stats: Rep
           <span className={styles.stars}>
             <StarIcon className={styles.statIcon} />
             {stats.stars}
-            <span className="visually-hidden"> estrellas</span>
+            <span className="visually-hidden"> stars</span>
           </span>
-          <span>Actualizado {formatRelative(stats.pushedAt)}</span>
+          <span>Updated {formatRelative(stats.pushedAt)}</span>
         </p>
       )}
     </div>
+  );
+}
+
+function Highlights({ items }: { items?: string[] }) {
+  if (!items?.length) return null;
+
+  return (
+    <ul className={styles.highlights}>
+      {items.map((highlight) => (
+        <li key={highlight}>{highlight}</li>
+      ))}
+    </ul>
   );
 }
 
@@ -84,7 +91,7 @@ function ProjectLinks({ project }: { project: Project }) {
       {code && (
         <a href={code} target="_blank" rel="noreferrer" className={styles.link}>
           <GitHubIcon className={styles.linkIcon} />
-          Código
+          Code
         </a>
       )}
       {demo && (

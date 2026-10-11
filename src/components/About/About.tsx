@@ -4,7 +4,7 @@ import styles from "./About.module.css";
 
 export function About() {
   return (
-    <Section id="sobre-mi">
+    <Section id="about">
       <div className={styles.about}>
         {profile.about.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>

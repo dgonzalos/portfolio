@@ -12,7 +12,7 @@ type SectionProps = {
 
 /** Section with the title in a fixed side column and the content on the right. */
 export function Section({ id, title, intro, tone = "default", children }: SectionProps) {
-  const headingId = `${id}-titulo`;
+  const headingId = `${id}-title`;
 
   return (
     <section id={id} aria-labelledby={headingId} className={styles.section} data-tone={tone}>

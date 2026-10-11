@@ -1,10 +1,10 @@
 export const sections = [
-  { id: "sobre-mi", label: "Sobre mí" },
-  { id: "experiencia", label: "Experiencia" },
-  { id: "habilidades", label: "Habilidades" },
-  { id: "proyectos", label: "Proyectos" },
-  { id: "productos", label: "Productos" },
-  { id: "contacto", label: "Contacto" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "products", label: "Products" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
 export type SectionId = (typeof sections)[number]["id"];

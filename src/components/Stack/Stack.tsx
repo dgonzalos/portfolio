@@ -1,7 +1,7 @@
 import styles from "./Stack.module.css";
 
 /** Compact list of technologies. */
-export function Stack({ items, label = "Tecnologías" }: { items: string[]; label?: string }) {
+export function Stack({ items, label = "Technologies" }: { items: string[]; label?: string }) {
   if (items.length === 0) return null;
 
   return (

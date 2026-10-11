@@ -11,9 +11,9 @@ export function Contact() {
   ].filter((social) => !isPlaceholder(social.href));
 
   return (
-    <Section id="contacto">
+    <Section id="contact">
       <div className={styles.contact}>
-        <p className={styles.lead}>¿Tienes un proyecto o una vacante en mente? Escríbeme.</p>
+        <p className={styles.lead}>Have a project or a role in mind? Get in touch.</p>
         <a href={`mailto:${profile.email}`} className={styles.email}>
           {profile.email}
         </a>

@@ -11,11 +11,11 @@ import { Footer } from "@/components/Footer/Footer";
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#contenido">
-        Saltar al contenido
+      <a className="skip-link" href="#content">
+        Skip to content
       </a>
       <Header />
-      <main id="contenido">
+      <main id="content">
         <Hero />
         <About />
         <Experience />

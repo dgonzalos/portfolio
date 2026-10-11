@@ -1,20 +1,20 @@
-const monthYear = new Intl.DateTimeFormat("es-ES", { month: "short", year: "numeric" });
+const monthYear = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" });
 
-/** "2024-01" → "ene 2024" */
+/** "2024-01" → "Jan 2024" */
 export function formatMonth(value: string): string {
   const [year, month] = value.split("-").map(Number);
   if (!year || !month) return value;
   return monthYear.format(new Date(Date.UTC(year, month - 1, 15))).replace(".", "");
 }
 
-/** "2024-01", null → "ene 2024 – actualidad" */
+/** "2024-01", null → "Jan 2024 – Present" */
 export function formatRange(start: string, end: string | null): string {
-  return `${formatMonth(start)} – ${end ? formatMonth(end) : "actualidad"}`;
+  return `${formatMonth(start)} – ${end ? formatMonth(end) : "Present"}`;
 }
 
-const relative = new Intl.RelativeTimeFormat("es-ES", { numeric: "auto" });
+const relative = new Intl.RelativeTimeFormat("en-US", { numeric: "auto" });
 
-/** ISO date → "hace 3 días" */
+/** ISO date → "3 days ago" */
 export function formatRelative(iso: string): string {
   const diffDays = Math.round((new Date(iso).getTime() - Date.now()) / 86_400_000);
   if (Math.abs(diffDays) < 30) return relative.format(diffDays, "day");
