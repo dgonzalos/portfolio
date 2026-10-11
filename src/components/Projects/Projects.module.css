@@ -1,4 +1,4 @@
-/* Destacado: imagen grande y detalle técnico */
+/* Featured: large image and technical detail */
 .featured {
   display: grid;
   gap: var(--space-8);
@@ -80,7 +80,7 @@
   background: var(--color-accent);
 }
 
-/* Resto: lista sobria con separadores */
+/* The rest: understated list with dividers */
 .list {
   display: grid;
 }

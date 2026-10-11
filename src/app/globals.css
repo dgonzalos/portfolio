@@ -1,26 +1,26 @@
 /*
- * Tokens de diseño. Los componentes solo consumen estas variables:
- * nunca escriben un color o una fuente directamente.
+ * Design tokens. Components only consume these variables:
+ * they never hardcode a color or a font.
  */
 
 :root {
-  /* Paleta — claro */
+  /* Palette — light */
   --color-bg: #ffffff;
   --color-surface: #f1f6f6;
   --color-ink: #0e2226;
   --color-muted: #4a6166;
   --color-line: #d5e2e3;
-  --color-primary: #0b4f5c; /* azul petróleo */
-  --color-accent: #1e9e6a; /* verde (decoración, bordes, puntos) */
-  --color-accent-text: #137a50; /* verde con contraste AA sobre blanco */
+  --color-primary: #0b4f5c; /* petrol blue */
+  --color-accent: #1e9e6a; /* green (decoration, borders, dots) */
+  --color-accent-text: #137a50; /* green with AA contrast on white */
 
-  /* El inicio va siempre sobre petróleo, en los dos temas */
+  /* The hero always sits on petrol blue, in both themes */
   --hero-bg: #0b4f5c;
   --hero-ink: #ffffff;
   --hero-muted: #bfe3da;
   --hero-accent: #5ee0a8;
 
-  /* Tipografía */
+  /* Typography */
   --font-display: "Bricolage Grotesque Variable", system-ui, sans-serif;
   --font-body: "Figtree Variable", system-ui, sans-serif;
 
@@ -31,7 +31,7 @@
   --text-2xl: clamp(1.875rem, 1.4rem + 1.8vw, 2.5rem);
   --text-hero: clamp(3rem, 1.6rem + 7vw, 7.5rem);
 
-  /* Espaciado y layout */
+  /* Spacing and layout */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -70,7 +70,7 @@
   color-scheme: dark;
 }
 
-/* Reset mínimo */
+/* Minimal reset */
 *,
 *::before,
 *::after {

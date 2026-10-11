@@ -5,15 +5,15 @@ import styles from "./ImageSlot.module.css";
 type ImageSlotProps = {
   src?: string;
   alt: string;
-  /** Texto del marcador mientras no exista la imagen. */
+  /** Placeholder text while the image doesn't exist. */
   fallback: string;
   sizes?: string;
   className?: string;
 };
 
 /**
- * Imagen 16:10 de /public. Si el archivo aún no existe, muestra un marcador
- * con el nombre del proyecto y la ruta que espera, para saber qué falta.
+ * 16:10 image from /public. If the file doesn't exist yet, shows a placeholder
+ * with the project name and the expected path, so you know what's missing.
  */
 export function ImageSlot({ src, alt, fallback, sizes = "(max-width: 52rem) 100vw, 50vw", className }: ImageSlotProps) {
   const exists = publicFileExists(src);

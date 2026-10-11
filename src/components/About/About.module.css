@@ -6,7 +6,7 @@
   line-height: 1.65;
 }
 
-/* El primer párrafo abre la sección con más presencia */
+/* The first paragraph opens the section with more presence */
 .about > p:first-child {
   font-family: var(--font-display);
   font-size: var(--text-xl);

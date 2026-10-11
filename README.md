@@ -1,61 +1,61 @@
 # Portfolio
 
-Portfolio personal hecho con Next.js 16 (App Router), React 19, TypeScript y CSS Modules.
+Personal portfolio built with Next.js 16 (App Router), React 19, TypeScript and CSS Modules.
 
-## Empezar
+## Getting started
 
 ```bash
 npm install
-cp .env.example .env.local   # opcional
+cp .env.example .env.local   # optional
 npm run dev
 ```
 
-Abre http://localhost:3000.
+Open http://localhost:3000.
 
-## Dónde está cada cosa
+## Where everything lives
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx            Metadatos, fuentes y script de tema
-│   ├── page.tsx              Orden de las secciones
-│   ├── globals.css           Tokens de diseño (colores, tipografía, espaciado)
-│   ├── opengraph-image.tsx   Imagen al compartir el enlace
+│   ├── layout.tsx            Metadata, fonts and theme script
+│   ├── page.tsx              Section order
+│   ├── globals.css           Design tokens (colors, typography, spacing)
+│   ├── opengraph-image.tsx   Image shown when the link is shared
 │   └── icon.svg              Favicon
-├── content/                  ← Tu contenido. Rellena los TODO
-│   ├── profile.ts            Nombre, titular, resumen, redes
+├── content/                  ← Your content. Fill in the TODOs
+│   ├── profile.ts            Name, headline, summary, socials
 │   ├── experience.ts
 │   ├── skills.ts
-│   ├── projects.ts           Repos de GitHub
-│   ├── products.ts           Apps desplegadas
+│   ├── projects.ts           GitHub repos
+│   ├── products.ts           Deployed apps
 │   └── types.ts
-├── components/               Un componente por carpeta, con su .module.css
-└── lib/                      Formato de fechas, GitHub, tema
+├── components/               One component per folder, with its .module.css
+└── lib/                      Date formatting, GitHub, theme
 ```
 
-## Contenido
+## Content
 
-Todo el texto sale de `src/content/`. Busca `TODO` y sustitúyelo. TypeScript te avisa si falta un campo obligatorio.
+All text comes from `src/content/`. Search for `TODO` and replace it. TypeScript will warn you if a required field is missing.
 
-Archivos para `public/`:
+Files for `public/`:
 
-| Archivo | Uso | Formato |
+| File | Use | Format |
 | --- | --- | --- |
-| `avatar.jpg` | Foto del inicio | Cuadrada, mín. 400×400 |
-| `cv-diego.pdf` | Botón «Descargar CV» | PDF |
-| `projects/*.png` | Capturas de proyectos | 16:10, p. ej. 1600×1000 |
-| `products/*.png` | Capturas de productos | 16:10, p. ej. 1600×1000 |
+| `avatar.jpg` | Hero photo | Square, min. 400×400 |
+| `cv-diego.pdf` | "Descargar CV" button | PDF |
+| `projects/*.png` | Project screenshots | 16:10, e.g. 1600×1000 |
+| `products/*.png` | Product screenshots | 16:10, e.g. 1600×1000 |
 
-Mientras una imagen no exista, se muestra un marcador con la ruta que espera; la foto y el botón de CV simplemente no aparecen.
+While an image doesn't exist, a placeholder showing the expected path is displayed; the photo and the CV button simply don't appear.
 
-## Tema claro / oscuro
+## Light / dark theme
 
-Los colores están en `src/app/globals.css` como variables CSS, con los valores del tema oscuro bajo `:root[data-theme="dark"]`. Los componentes solo usan esas variables. Un script en `<head>` aplica el tema guardado o el del sistema antes de pintar, así que no hay parpadeo.
+Colors live in `src/app/globals.css` as CSS variables, with the dark theme values under `:root[data-theme="dark"]`. Components only use those variables. A script in `<head>` applies the saved theme (or the system one) before paint, so there's no flicker.
 
 ## GitHub
 
-`src/lib/github.ts` consulta estrellas y último push de cada repo de `projects.ts` y lo revalida cada 6 horas. Funciona sin token; con `GITHUB_TOKEN` en `.env.local` (o en Vercel) evitas el límite de 60 peticiones/hora.
+`src/lib/github.ts` fetches stars and last push for each repo in `projects.ts` and revalidates every 6 hours. It works without a token; setting `GITHUB_TOKEN` in `.env.local` (or on Vercel) avoids the 60 requests/hour limit.
 
-## Despliegue
+## Deployment
 
-Importa el repo en Vercel y añade `NEXT_PUBLIC_SITE_URL` con tu dominio.
+Import the repo into Vercel and add `NEXT_PUBLIC_SITE_URL` with your domain.

@@ -15,7 +15,7 @@ function getTheme(): Theme {
 }
 
 export function ThemeToggle() {
-  // En el servidor no conocemos el tema: null hasta hidratar.
+  // The server doesn't know the theme: null until hydration.
   const theme = useSyncExternalStore(subscribe, getTheme, () => null);
   const next: Theme = theme === "dark" ? "light" : "dark";
 
@@ -24,7 +24,7 @@ export function ThemeToggle() {
     try {
       localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
-      // Almacenamiento bloqueado: el cambio vale para esta visita.
+      // Storage blocked: the change only lasts for this visit.
     }
   }
 
@@ -35,7 +35,7 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label={theme ? `Cambiar a tema ${next === "dark" ? "oscuro" : "claro"}` : "Cambiar tema"}
     >
-      {/* Los iconos se muestran por CSS según data-theme, sin esperar a hidratar */}
+      {/* Icons are shown via CSS based on data-theme, without waiting for hydration */}
       <svg className={styles.moon} viewBox="0 0 24 24" aria-hidden="true">
         <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
       </svg>

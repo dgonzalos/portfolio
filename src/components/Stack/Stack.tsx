@@ -1,6 +1,6 @@
 import styles from "./Stack.module.css";
 
-/** Lista compacta de tecnologías. */
+/** Compact list of technologies. */
 export function Stack({ items, label = "Tecnologías" }: { items: string[]; label?: string }) {
   if (items.length === 0) return null;
 

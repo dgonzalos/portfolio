@@ -14,7 +14,7 @@ export function formatRange(start: string, end: string | null): string {
 
 const relative = new Intl.RelativeTimeFormat("es-ES", { numeric: "auto" });
 
-/** Fecha ISO → "hace 3 días" */
+/** ISO date → "hace 3 días" */
 export function formatRelative(iso: string): string {
   const diffDays = Math.round((new Date(iso).getTime() - Date.now()) / 86_400_000);
   if (Math.abs(diffDays) < 30) return relative.format(diffDays, "day");
@@ -32,7 +32,7 @@ export function initials(name: string): string {
     .join("");
 }
 
-/** true si el valor sigue siendo un marcador de la plantilla */
+/** true if the value is still a template placeholder */
 export function isPlaceholder(value: string | undefined): boolean {
   return !value || value.includes("TODO");
 }

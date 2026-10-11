@@ -1,4 +1,4 @@
-/* Línea de tiempo: la experiencia sí es una secuencia, así que la línea aporta información */
+/* Timeline: experience really is a sequence, so the line carries information */
 .timeline {
   display: grid;
   gap: var(--space-12);

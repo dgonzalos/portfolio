@@ -28,7 +28,7 @@
   letter-spacing: -0.02em;
 }
 
-/* Trazo verde bajo el título: marca de la sección, no decoración repetida */
+/* Green stroke under the title: a section marker, not repeated decoration */
 .title::after {
   content: "";
   display: block;

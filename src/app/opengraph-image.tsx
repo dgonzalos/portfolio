@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { profile } from "@/content/profile";
 
-// Imagen que aparece al compartir el enlace en LinkedIn, X, Slack…
+// Image shown when the link is shared on LinkedIn, X, Slack…
 export const alt = `${profile.name}, ${profile.headline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

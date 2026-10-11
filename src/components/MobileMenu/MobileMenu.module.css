@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-/* Hamburguesa que se convierte en X */
+/* Hamburger that turns into an X */
 .bars,
 .bars::before,
 .bars::after {

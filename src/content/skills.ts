@@ -1,7 +1,7 @@
 import type { SkillGroup } from "./types";
 
-// Solo lo que defenderías en una entrevista. Mejor 6 sólidas por grupo que 20 vistas una vez.
-// Revisa, quita y añade lo que haga falta.
+// Only what you'd defend in an interview. Better 6 solid ones per group than 20 seen once.
+// Review, remove and add as needed.
 
 export const skills: SkillGroup[] = [
   {

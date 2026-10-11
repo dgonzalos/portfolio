@@ -1,8 +1,8 @@
 import type { Product } from "./types";
 
-// Apps desplegadas que alguien puede abrir y usar hoy.
-// La diferencia con Proyectos: aquí importa el resultado (quién lo usa, qué resuelve),
-// no tanto el código.
+// Deployed apps that someone can open and use today.
+// The difference from Projects: what matters here is the outcome (who uses it, what it solves),
+// not so much the code.
 
 export const products: Product[] = [
   {
@@ -18,5 +18,5 @@ export const products: Product[] = [
     metrics: "TODO (opcional): Ej. 150 usuarios activos al mes",
     // repo: "TODO_USUARIO/TODO_REPO",
   },
-  // Copia un bloque por cada producto.
+  // Copy one block per product.
 ];

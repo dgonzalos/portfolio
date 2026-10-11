@@ -1,21 +1,21 @@
-// Tipos del contenido del portfolio.
-// Irá en src/content/types.ts. No hace falta tocarlo para rellenar el contenido.
+// Portfolio content types.
+// You don't need to touch this to fill in the content.
 
 export type Profile = {
   name: string;
-  /** Titular tipo LinkedIn. Máx. ~80 caracteres. */
+  /** LinkedIn-style headline. Max ~80 characters. */
   headline: string;
-  /** 1–2 frases que acompañan al titular en el inicio. */
+  /** 1–2 sentences that accompany the headline in the hero. */
   summary: string;
-  /** Párrafos de la sección "Sobre mí" (2–3 párrafos cortos). */
+  /** Paragraphs for the "Sobre mí" (About) section (2–3 short paragraphs). */
   about: string[];
   location?: string;
   email: string;
-  /** Ruta dentro de /public, p. ej. "/avatar.jpg" (cuadrada, mín. 400×400). */
+  /** Path inside /public, e.g. "/avatar.jpg" (square, min. 400×400). */
   avatar?: string;
-  /** Ruta dentro de /public, p. ej. "/cv-diego.pdf". */
+  /** Path inside /public, e.g. "/cv-diego.pdf". */
   cvUrl?: string;
-  /** Texto corto de disponibilidad, p. ej. "Abierto a nuevas oportunidades". */
+  /** Short availability text, e.g. "Abierto a nuevas oportunidades". */
   availability?: string;
   socials: {
     github: string;
@@ -28,13 +28,13 @@ export type Experience = {
   company: string;
   companyUrl?: string;
   role: string;
-  /** Formato "AAAA-MM". */
+  /** Format "YYYY-MM". */
   start: string;
-  /** Formato "AAAA-MM", o null si es tu puesto actual. */
+  /** Format "YYYY-MM", or null if it's your current role. */
   end: string | null;
   location?: string;
   type?: "full-time" | "freelance" | "prácticas" | "contrato";
-  /** 2–3 logros. Mejor verbo + qué hiciste + resultado medible. */
+  /** 2–3 achievements. Ideally verb + what you did + measurable result. */
   highlights: string[];
   stack: string[];
 };
@@ -44,39 +44,39 @@ export type SkillGroup = {
   items: string[];
 };
 
-/** Repos de GitHub que quieres destacar con información extra. */
+/** GitHub repos you want to highlight with extra information. */
 export type Project = {
   slug: string;
   name: string;
-  /** "usuario/repo". Se usa para cruzar con la API de GitHub (estrellas, último commit). */
+  /** "user/repo". Used to look up the GitHub API (stars, last commit). */
   repo: string;
   description: string;
   stack: string[];
-  /** Qué hace interesante el proyecto técnicamente (2–4 puntos). */
+  /** What makes the project technically interesting (2–4 points). */
   highlights?: string[];
   demoUrl?: string;
-  /** Ruta dentro de /public, p. ej. "/projects/ticketing.png" (16:10). */
+  /** Path inside /public, e.g. "/projects/ticketing.png" (16:10). */
   image?: string;
-  /** El destacado aparece primero y más grande. */
+  /** The featured one appears first and larger. */
   featured?: boolean;
 };
 
-/** Apps desplegadas que usa gente real. */
+/** Deployed apps used by real people. */
 export type Product = {
   slug: string;
   name: string;
   url: string;
-  /** Una línea: qué es. */
+  /** One line: what it is. */
   tagline: string;
-  /** Qué problema resuelve y para quién. */
+  /** What problem it solves and for whom. */
   problem: string;
-  /** Qué hiciste tú (todo, el frontend, el diseño…). */
+  /** What you did (everything, the frontend, the design…). */
   role: string;
   stack: string[];
-  /** Captura 1600×1000 en /public/products. */
+  /** 1600×1000 screenshot in /public/products. */
   image: string;
   status: "live" | "beta";
-  /** Opcional pero muy potente: usuarios, descargas, ingresos… */
+  /** Optional but very powerful: users, downloads, revenue… */
   metrics?: string;
   repo?: string;
 };

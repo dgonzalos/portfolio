@@ -1,8 +1,8 @@
 import type { Project } from "./types";
 
-// Repos de GitHub que quieres destacar. El resto de repos fijados en tu perfil
-// se pueden mostrar automáticamente desde la API; aquí van los que merecen más detalle.
-// Marca uno solo como featured.
+// GitHub repos you want to highlight. The rest of the repos pinned on your profile
+// can be shown automatically from the API; the ones that deserve more detail go here.
+// Mark only one as featured.
 
 export const projects: Project[] = [
   {
@@ -28,5 +28,5 @@ export const projects: Project[] = [
     description: "TODO",
     stack: ["TODO"],
   },
-  // Copia un bloque por cada proyecto. Recomendado: 3–6 en total.
+  // Copy one block per project. Recommended: 3–6 in total.
 ];

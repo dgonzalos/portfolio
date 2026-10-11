@@ -28,7 +28,7 @@
   stroke-linejoin: round;
 }
 
-/* Claro: luna (pasar a oscuro). Oscuro: sol (pasar a claro). */
+/* Light: moon (switch to dark). Dark: sun (switch to light). */
 .sun {
   display: none;
 }

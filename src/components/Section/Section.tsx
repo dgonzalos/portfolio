@@ -3,14 +3,14 @@ import styles from "./Section.module.css";
 
 type SectionProps = {
   id: SectionId;
-  /** Por defecto, el nombre de la sección en la navegación. */
+  /** Defaults to the section's name in the navigation. */
   title?: string;
   intro?: string;
   tone?: "default" | "surface";
   children: React.ReactNode;
 };
 
-/** Sección con el título en una columna lateral fija y el contenido a la derecha. */
+/** Section with the title in a fixed side column and the content on the right. */
 export function Section({ id, title, intro, tone = "default", children }: SectionProps) {
   const headingId = `${id}-titulo`;
 

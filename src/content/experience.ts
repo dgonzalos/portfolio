@@ -1,9 +1,9 @@
 import type { Experience } from "./types";
 
-// Del puesto más reciente al más antiguo.
-// Para los logros: verbo + qué hiciste + resultado. Si hay un número, ponlo.
-//   ✗ "Trabajé en el frontend de la app"
-//   ✓ "Migré el frontend a Next.js, reduciendo el tiempo de carga un 40%"
+// From most recent role to oldest.
+// For highlights: verb + what you did + result. If there's a number, include it.
+//   ✗ "Worked on the app's frontend"
+//   ✓ "Migrated the frontend to Next.js, cutting load time by 40%"
 
 export const experience: Experience[] = [
   {
@@ -11,7 +11,7 @@ export const experience: Experience[] = [
     companyUrl: "https://TODO",
     role: "TODO Frontend Developer",
     start: "2024-01",
-    end: null, // null = actualidad
+    end: null, // null = present
     location: "TODO: Ciudad / Remoto",
     type: "full-time",
     highlights: [
@@ -29,5 +29,5 @@ export const experience: Experience[] = [
     highlights: ["TODO: Logro 1", "TODO: Logro 2"],
     stack: ["TODO"],
   },
-  // Copia un bloque por cada puesto más.
+  // Copy one block per additional role.
 ];

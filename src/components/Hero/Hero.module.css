@@ -45,7 +45,7 @@
   animation: pulse 2.4s ease-out infinite;
 }
 
-/* El nombre es el elemento protagonista: grande, compacto y con una sola entrada animada */
+/* The name is the star element: large, tight, and with a single entrance animation */
 .name {
   font-size: var(--text-hero);
   font-weight: 750;

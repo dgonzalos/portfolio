@@ -1,11 +1,11 @@
 import type { Profile } from "./types";
 
-// TODO: rellena todo lo marcado. Lo que ya está escrito es una propuesta, cámbialo libremente.
+// TODO: fill in everything marked. What's already written is a suggestion, change it freely.
 
 export const profile: Profile = {
   name: "Diego TODO_APELLIDO",
 
-  // Ejemplos de titular (elige uno o escribe el tuyo, como en LinkedIn):
+  // Headline examples (pick one or write your own, as on LinkedIn):
   // - "Frontend Developer · React & Next.js · Interfaces con IA"
   // - "Frontend Developer especializado en React y en integrar IA en la web"
   headline: "Frontend Developer · React & Next.js · Interfaces con IA",

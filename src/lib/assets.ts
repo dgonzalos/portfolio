@@ -3,9 +3,9 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 
 /**
- * Comprueba si un archivo existe en /public. Permite que el contenido
- * apunte a imágenes que todavía no has añadido sin romper la página:
- * mientras falten, se muestra un marcador.
+ * Checks whether a file exists in /public. Lets content point to images
+ * you haven't added yet without breaking the page: while they're missing,
+ * a placeholder is shown.
  */
 export function publicFileExists(src: string | undefined): src is string {
   if (!src || !src.startsWith("/")) return false;

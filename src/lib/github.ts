@@ -7,16 +7,16 @@ export type RepoStats = {
   language: string | null;
 };
 
-const REVALIDATE_SECONDS = 60 * 60 * 6; // 6 horas
+const REVALIDATE_SECONDS = 60 * 60 * 6; // 6 hours
 
 export function repoUrl(repo: string): string | null {
   return isPlaceholder(repo) ? null : `https://github.com/${repo}`;
 }
 
 /**
- * Estrellas, último push y lenguaje de un repo público.
- * Se cachea y revalida cada 6 horas. Si GitHub falla o el repo
- * aún es un marcador, devuelve null y la tarjeta se pinta sin datos.
+ * Stars, last push and language of a public repo.
+ * Cached and revalidated every 6 hours. If GitHub fails or the repo
+ * is still a placeholder, returns null and the card renders without stats.
  */
 export async function getRepoStats(repo: string): Promise<RepoStats | null> {
   if (isPlaceholder(repo) || !/^[\w.-]+\/[\w.-]+$/.test(repo)) return null;
